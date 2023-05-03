@@ -3,7 +3,7 @@ import "reflect-metadata";
 import { DataSource } from "typeorm";
 import { Board } from "@/boards/entities/board.entity";
 
-const LocalDataSource = new DataSource({
+export const LocalDataSource = new DataSource({
 	type: "mysql",
 	host: "localhost",
 	port: 3306,
@@ -11,10 +11,10 @@ const LocalDataSource = new DataSource({
 	password: "",
 	database: "sptmxm",
 	entities: [Board],
-	synchronize: false,
+	synchronize: true,
 	logging: false,
-})
-.initialize();
+});
+// .initialize();
 	// .initialize()
 	// .then(() => {
 	// 	console.log("Data Source has been initialized!")
@@ -23,7 +23,9 @@ const LocalDataSource = new DataSource({
 	// 	console.error("Error during Data Source initialization", err)
 	// });
 
-export { LocalDataSource }
+LocalDataSource.initialize();
+
+// export { LocalDataSource }
 
 // LocalDataSource.initialize()
 // 	.then(() => {

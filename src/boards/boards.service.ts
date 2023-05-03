@@ -4,33 +4,32 @@ import { Board } from './entities/board.entity';
 // import { localDataSource } from '@/database/data-source';
 import { LocalDataSource } from "@/database/data-source";
 import { InjectEntityManager, InjectRepository } from '@nestjs/typeorm';
-import { EntityManager, Repository } from 'typeorm';
+import { DataSource, EntityManager, Repository } from 'typeorm';
 
 @Injectable() // 다른 컴포넌트에서 이 서비스를 사용할 수 있게 injectable 해준다
 export class BoardsService {
 	constructor(
 	){
-		
+
 	}
 
 	async inputBoard(): Promise<void>{
-		const localDataSource = LocalDataSource;
-		const boardRepository = (await localDataSource).getRepository(Board);
+		const boardRepository = LocalDataSource.getRepository(Board);
 
 		const board = new Board();
 
-		board.title = "연습5";
-		board.content = "내용5";
+		board.title = "연습2";
+		board.content = "내용2";
 
-		boardRepository.save(board);
+		// await boardRepository.save(board);
+		await boardRepository.save(board);
 
 	}
 
 	async getBoardRow(seq: number): Promise<Board> {
-		const localDataSource = LocalDataSource;
-		const boardRepository = (await localDataSource).getRepository(Board);
+		const boardRepository = LocalDataSource.getRepository(Board);
 
-		const boardRow = boardRepository.findOneBy({
+		const boardRow = await boardRepository.findOneBy({
 			seq: seq,
 		});
 
@@ -39,10 +38,9 @@ export class BoardsService {
 	}
 
 	async getBoardAll(): Promise<Board[]> {
-		const localDataSource = LocalDataSource;
-		const boardRepository = (await localDataSource).getRepository(Board);
+		const boardRepository = LocalDataSource.getRepository(Board);
 
-		const boardAll = boardRepository.find();
+		const boardAll = await boardRepository.find();
 
 		return boardAll;
 		
