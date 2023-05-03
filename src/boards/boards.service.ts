@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Body, Injectable } from '@nestjs/common';
 import { CreateBoardDto } from './dto/create-board.dto';
 import { Board } from './entities/board.entity';
 // import { localDataSource } from '@/database/data-source';
@@ -13,13 +13,13 @@ export class BoardsService {
 
 	}
 
-	async inputBoard(): Promise<void>{
+	async inputBoard(createBoardDto: CreateBoardDto): Promise<void>{
 		const boardRepository = LocalDataSource.getRepository(Board);
 
 		const board = new Board();
 
-		board.title = "연습2";
-		board.content = "내용2";
+		board.title = createBoardDto.title;
+		board.content = createBoardDto.content;
 
 		// await boardRepository.save(board);
 		await boardRepository.save(board);
@@ -44,6 +44,10 @@ export class BoardsService {
 
 		return boardAll;
 		
+	}
+
+	async modifyBoard(): Promise<void>{
+		 
 	}
 
 	// async getBoardById(id: number): Promise <Board> {

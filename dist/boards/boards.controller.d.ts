@@ -5,5 +5,5 @@ export declare class BoardsController {
     constructor(boardsService: BoardsService);
     getBoardRow(seq: number): Promise<Board>;
     getBoardAll(): Promise<Board[]>;
-    inputBoard(): void;
+    inputBoard(body: any): void;
 }

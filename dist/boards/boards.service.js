@@ -16,11 +16,11 @@ const data_source_1 = require("../database/data-source");
 let BoardsService = class BoardsService {
     constructor() {
     }
-    async inputBoard() {
+    async inputBoard(createBoardDto) {
         const boardRepository = data_source_1.LocalDataSource.getRepository(board_entity_1.Board);
         const board = new board_entity_1.Board();
-        board.title = "연습2";
-        board.content = "내용2";
+        board.title = createBoardDto.title;
+        board.content = createBoardDto.content;
         await boardRepository.save(board);
     }
     async getBoardRow(seq) {
@@ -34,6 +34,8 @@ let BoardsService = class BoardsService {
         const boardRepository = data_source_1.LocalDataSource.getRepository(board_entity_1.Board);
         const boardAll = await boardRepository.find();
         return boardAll;
+    }
+    async modifyBoard() {
     }
 };
 BoardsService = __decorate([

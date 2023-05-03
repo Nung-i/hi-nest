@@ -23,8 +23,8 @@ export class BoardsController {
 	}
 
 	@Post()
-	inputBoard(): void{
-		this.boardsService.inputBoard();
+	inputBoard(@Body() body): void{
+		this.boardsService.inputBoard(body);
 
 	}
 

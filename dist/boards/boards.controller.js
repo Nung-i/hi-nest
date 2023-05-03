@@ -26,8 +26,8 @@ let BoardsController = class BoardsController {
     getBoardAll() {
         return this.boardsService.getBoardAll();
     }
-    inputBoard() {
-        this.boardsService.inputBoard();
+    inputBoard(body) {
+        this.boardsService.inputBoard(body);
     }
 };
 __decorate([
@@ -45,8 +45,9 @@ __decorate([
 ], BoardsController.prototype, "getBoardAll", null);
 __decorate([
     (0, decorators_1.Post)(),
+    __param(0, (0, decorators_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], BoardsController.prototype, "inputBoard", null);
 BoardsController = __decorate([
