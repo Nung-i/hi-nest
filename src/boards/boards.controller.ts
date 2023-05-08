@@ -10,23 +10,29 @@ import { BoardStatusValidationPipe } from './pipes/board-status-validation.pipe'
 export class BoardsController {
 	constructor(private boardsService: BoardsService){}
 
-	@Get(":seq")
-	getBoardRow(@Param("seq") seq: number): Promise<Board>{
-		return this.boardsService.getBoardRow(seq);
+	@Get('find-all')
+	findAll(): Promise<Board[]>{
+		return this.boardsService.findAll();
 
 	}
 
-	@Get()
-	getBoardAll(): Promise<Board[]>{
-		return this.boardsService.getBoardAll();
+	// @Get(":seq")
+	// getBoardRow(@Param("seq") seq: number): Promise<Board>{
+	// 	return this.boardsService.getBoardRow(seq);
 
-	}
+	// }
 
-	@Post()
-	inputBoard(@Body() body): void{
-		this.boardsService.inputBoard(body);
+	// @Get()
+	// getBoardAll(): Promise<Board[]>{
+	// 	return this.boardsService.getBoardAll();
 
-	}
+	// }
+
+	// @Post()
+	// inputBoard(@Body() body): void{
+	// 	this.boardsService.inputBoard(body);
+
+	// }
 
 	// @Get()
 	// getAllBoard(): Board[]{

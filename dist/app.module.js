@@ -9,12 +9,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const boards_module_1 = require("./boards/boards.module");
+const auth_module_1 = require("./auth/auth.module");
+const boards2_module_1 = require("./boards2/boards2.module");
+const mytypeorm_module_1 = require("./mytypeorm/mytypeorm.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
             boards_module_1.BoardsModule,
+            auth_module_1.AuthModule,
+            boards2_module_1.Boards2Module,
+            mytypeorm_module_1.MytypeormModule,
         ],
     })
 ], AppModule);

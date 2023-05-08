@@ -8,9 +8,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BoardsController = void 0;
 const common_1 = require("@nestjs/common");
@@ -20,36 +17,16 @@ let BoardsController = class BoardsController {
     constructor(boardsService) {
         this.boardsService = boardsService;
     }
-    getBoardRow(seq) {
-        return this.boardsService.getBoardRow(seq);
-    }
-    getBoardAll() {
-        return this.boardsService.getBoardAll();
-    }
-    inputBoard(body) {
-        this.boardsService.inputBoard(body);
+    findAll() {
+        return this.boardsService.findAll();
     }
 };
 __decorate([
-    (0, decorators_1.Get)(":seq"),
-    __param(0, (0, decorators_1.Param)("seq")),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", Promise)
-], BoardsController.prototype, "getBoardRow", null);
-__decorate([
-    (0, decorators_1.Get)(),
+    (0, decorators_1.Get)('find-all'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
-], BoardsController.prototype, "getBoardAll", null);
-__decorate([
-    (0, decorators_1.Post)(),
-    __param(0, (0, decorators_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
-], BoardsController.prototype, "inputBoard", null);
+], BoardsController.prototype, "findAll", null);
 BoardsController = __decorate([
     (0, common_1.Controller)('boards'),
     __metadata("design:paramtypes", [boards_service_1.BoardsService])

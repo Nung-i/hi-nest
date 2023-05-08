@@ -1,9 +1,7 @@
-import { CreateBoardDto } from './dto/create-board.dto';
 import { Board } from './entities/board.entity';
+import { Repository } from 'typeorm';
 export declare class BoardsService {
-    constructor();
-    inputBoard(createBoardDto: CreateBoardDto): Promise<void>;
-    getBoardRow(seq: number): Promise<Board>;
-    getBoardAll(): Promise<Board[]>;
-    modifyBoard(): Promise<void>;
+    private boardRepository;
+    constructor(boardRepository: Repository<Board>);
+    findAll(): Promise<Board[]>;
 }

@@ -3,7 +3,5 @@ import { BoardsService } from './boards.service';
 export declare class BoardsController {
     private boardsService;
     constructor(boardsService: BoardsService);
-    getBoardRow(seq: number): Promise<Board>;
-    getBoardAll(): Promise<Board[]>;
-    inputBoard(body: any): void;
+    findAll(): Promise<Board[]>;
 }

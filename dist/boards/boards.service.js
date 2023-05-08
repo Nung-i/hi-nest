@@ -8,39 +8,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BoardsService = void 0;
 const common_1 = require("@nestjs/common");
 const board_entity_1 = require("./entities/board.entity");
-const data_source_1 = require("../database/data-source");
+const typeorm_1 = require("@nestjs/typeorm");
+const typeorm_2 = require("typeorm");
 let BoardsService = class BoardsService {
-    constructor() {
+    constructor(boardRepository) {
+        this.boardRepository = boardRepository;
     }
-    async inputBoard(createBoardDto) {
-        const boardRepository = data_source_1.LocalDataSource.getRepository(board_entity_1.Board);
-        const board = new board_entity_1.Board();
-        board.title = createBoardDto.title;
-        board.content = createBoardDto.content;
-        await boardRepository.save(board);
-    }
-    async getBoardRow(seq) {
-        const boardRepository = data_source_1.LocalDataSource.getRepository(board_entity_1.Board);
-        const boardRow = await boardRepository.findOneBy({
-            seq: seq,
-        });
-        return boardRow;
-    }
-    async getBoardAll() {
-        const boardRepository = data_source_1.LocalDataSource.getRepository(board_entity_1.Board);
-        const boardAll = await boardRepository.find();
-        return boardAll;
-    }
-    async modifyBoard() {
+    async findAll() {
+        return this.boardRepository.find();
     }
 };
 BoardsService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [])
+    __param(0, (0, typeorm_1.InjectRepository)(board_entity_1.Board)),
+    __metadata("design:paramtypes", [typeorm_2.Repository])
 ], BoardsService);
 exports.BoardsService = BoardsService;
 //# sourceMappingURL=boards.service.js.map
