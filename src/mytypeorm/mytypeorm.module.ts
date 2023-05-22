@@ -1,4 +1,5 @@
 import { Board } from '@/boards/entities/board.entity';
+import { Member } from '@/member/entities/member.entity';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
@@ -11,10 +12,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 			username: "root",
 			password: "",
 			database: "sptmxm",
-			entities: [Board],
+			// entities: [Board, Member],
 			synchronize: false,
 			logging: false,
-			// autoLoadEntities: true,
+			autoLoadEntities: true,
 		}),
 	],
 })

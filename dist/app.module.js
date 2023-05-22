@@ -12,6 +12,8 @@ const boards_module_1 = require("./boards/boards.module");
 const auth_module_1 = require("./auth/auth.module");
 const boards2_module_1 = require("./boards2/boards2.module");
 const mytypeorm_module_1 = require("./mytypeorm/mytypeorm.module");
+const auth_cookie_module_1 = require("./auth-cookie/auth-cookie.module");
+const member_module_1 = require("./member/member.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -21,6 +23,8 @@ AppModule = __decorate([
             auth_module_1.AuthModule,
             boards2_module_1.Boards2Module,
             mytypeorm_module_1.MytypeormModule,
+            auth_cookie_module_1.AuthCookieModule,
+            member_module_1.MemberModule,
         ],
     })
 ], AppModule);

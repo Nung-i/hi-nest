@@ -1,11 +1,10 @@
-import { Module } from '@nestjs/common';
+import { Module, ValidationPipe } from '@nestjs/common';
 import { BoardsModule } from './boards/boards.module';
-import { DataSource } from 'typeorm';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { Board } from "@/boards/entities/board.entity";
 import { AuthModule } from './auth/auth.module';
 import { Boards2Module } from './boards2/boards2.module';
 import { MytypeormModule } from './mytypeorm/mytypeorm.module';
+import { AuthCookieModule } from './auth-cookie/auth-cookie.module';
+import { MemberModule } from './member/member.module';
 
 
 // @Module({
@@ -37,6 +36,8 @@ import { MytypeormModule } from './mytypeorm/mytypeorm.module';
 		AuthModule,
 		Boards2Module,
 		MytypeormModule,
+		AuthCookieModule,
+		MemberModule,
 	],
 })
 
